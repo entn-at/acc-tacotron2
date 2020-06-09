@@ -179,10 +179,7 @@ class Encoder(nn.Module):
                             batch_first=True, bidirectional=True)
 
     def pad_again(self, x, max_len):
-        # print(x.size())
         out = F.pad(x, (0, 0, 0, max_len-x.size(1)))
-        # print(out.size())
-        # print(out == x)
         return out
 
     def forward(self, x, input_lengths, max_len):

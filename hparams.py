@@ -73,7 +73,7 @@ attention_dim = 128
 mask_padding = True
 n_symbols = num_phn
 symbols_embedding_dim = 512
-symbols_embedding_dim = 1024
+# symbols_embedding_dim = 1024
 
 # Train
 checkpoint_path = "./model_new"
