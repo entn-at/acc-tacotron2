@@ -85,7 +85,7 @@ def reprocess(batch, cut_list):
 
 
 def collate_fn(batch):
-    len_arr = np.array([d["mel_target"].shape[0] for d in batch])
+    len_arr = np.array([d["text"].shape[0] for d in batch])
     index_arr = np.argsort(-len_arr)
     batchsize = len(batch)
     real_batchsize = int(math.sqrt(batchsize))
