@@ -34,7 +34,7 @@ def main(args):
                                  betas=(0.9, 0.98),
                                  eps=1e-9)
     scheduled_optim = ScheduledOptim(optimizer,
-                                     hp.decoder_rnn_dim,
+                                     hp.encoder_embedding_dim,
                                      hp.n_warm_up_step,
                                      args.restore_step)
     criterion = DNNLoss().to(device)
