@@ -85,7 +85,7 @@ def main(args):
 
                 # Get Data
                 character = torch.from_numpy(db["text"]).long().to(device)
-                mel_target = torch.from_numpy(db["mel_target"])
+                mel_target = torch.from_numpy(db["mel_target"]).transpose(1, 2)
                 mel_target = mel_target.float().to(device)
                 duration = torch.from_numpy(db["D"]).int().to(device)
                 src_pos = torch.from_numpy(db["src_pos"]).long().to(device)
