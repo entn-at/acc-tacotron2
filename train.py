@@ -97,9 +97,6 @@ def main(args):
                 stop_token = torch.from_numpy(db["stop_token"])
                 stop_token = stop_token.float().to(device)
 
-                print(input_lengths)
-                print(output_lengths)
-
                 # Forward
                 batch = character, input_lengths, mel_target, stop_token, output_lengths
                 x, y = model.module.parse_batch(batch)
@@ -147,8 +144,8 @@ def main(args):
 
                     str1 = "Epoch [{}/{}], Step [{}/{}]:".format(
                         epoch+1, hp.epochs, current_step, total_step)
-                    str2 = "Mel Loss: {:.4f}, Mel PostNet Loss: {:.4f}, " + \
-                        "Duration Loss: {:.4f};".format(m_l, m_p_l, s_l)
+                    str2 = "Mel Loss: {:.4f}, Mel PostNet Loss: {:.4f}, ".format(m_l, m_p_l) + \
+                        "Stop Prediction Loss: {:.4f};".format(s_l)
                     str3 = "Current Learning Rate is {:.6f}.".format(
                         scheduled_optim.get_learning_rate())
                     str4 = "Time Used: {:.3f}s, Estimated Time Remaining: {:.3f}s.".format(
