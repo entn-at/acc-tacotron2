@@ -87,7 +87,7 @@ def main(args):
                 character = torch.from_numpy(db["text"]).long().to(device)
                 mel_target = torch.from_numpy(db["mel_target"])
                 mel_target = mel_target.float().to(device)
-                D = torch.from_numpy(db["D"]).int().to(device)
+                duration = torch.from_numpy(db["D"]).int().to(device)
                 src_pos = torch.from_numpy(db["src_pos"]).long().to(device)
                 mel_pos = torch.from_numpy(db["mel_pos"]).long().to(device)
                 max_mel_len = db["mel_max_len"]
@@ -96,6 +96,9 @@ def main(args):
                 output_lengths = torch.max(mel_pos, -1)[0]
                 stop_token = torch.from_numpy(db["stop_token"])
                 stop_token = stop_token.float().to(device)
+
+                print(input_lengths)
+                print(output_lengths)
 
                 # Forward
                 batch = character, input_lengths, mel_target, stop_token, output_lengths
